@@ -1,7 +1,6 @@
-package com.air.containeros.serivrice;
+package com.air.containeros.service;
 
 
-import com.air.containeros.untils.DockerConnection;
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.model.Container;
 import com.github.dockerjava.api.model.Image;
@@ -87,10 +86,10 @@ public class DockerService {
     /**
      * 停止容器
      *
-     * @param container 容器ID
+     * @param containerID 容器ID
      */
-    public void stopContainer(String container) {
-        dockerClient.stopContainerCmd(container).exec();
+    public void stopContainer(String containerID) {
+        dockerClient.stopContainerCmd(containerID).exec();
     }
 
     /**
@@ -103,14 +102,14 @@ public class DockerService {
 
     }
 
-//
-//    /**
-//     * 删除容器
-//     * @param container 容器ID
-//     */
-//    public void removeContainer(String container) {
-//        dockerClient.removeContainerCmd(container).exec();
-//    }
+
+    /**
+     * 删除容器
+     * @param containerID 容器ID
+     */
+    public void removeContainer(String containerID) {
+        dockerClient.removeContainerCmd(containerID).exec();
+    }
 
 
 }
