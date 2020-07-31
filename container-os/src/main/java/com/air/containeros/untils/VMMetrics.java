@@ -13,6 +13,13 @@ import java.util.Map;
 
 @Component
 public class VMMetrics {
+    public static final String TOTAL_MEMORY = "node_memory_Active_anon_bytes";
+    public static final String CPU = "node_cpu_seconds_total";
+//    public static final String TOTAL_CPU = "node_memory_Active_anon_bytes";
+//    public static final String TOTAL_DISK = "node_memory_Active_anon_bytes";
+//    public static final String RESIDUE_MEMORY = "node_memory_Active_anon_bytes";
+//    public static final String RESIDUE_CPU = "node_memory_Active_anon_bytes";
+//    public static final String RESIDUE_DISK = "node_memory_Active_anon_bytes";
 
     @Bean
     public List<String> getVMMetrics() {

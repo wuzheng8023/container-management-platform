@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ * dockerClient.createImageCmd();个人理解，应该是上传一个dockerfile的同时创建一个镜像
+ * dockerClient.buildImageCmd()；直接依据dockerfile的文件流创建一个镜像
+ */
 @Service
 public class DockerService {
 
@@ -27,6 +31,9 @@ public class DockerService {
      * @return
      */
     public List<Image> getImagesList() {
+//        System.out.println("-----------------------");
+//        System.out.println(dockerClient.buildImageCmd().getMemory());
+//        System.out.println("-----------------------");
 
         return dockerClient.listImagesCmd().exec();
 //        return dockerConnection.getDockerClient().listImagesCmd().exec();
