@@ -13,13 +13,14 @@ import java.util.Map;
 
 @Component
 public class VMMetrics {
-    public static final String TOTAL_MEMORY = "node_memory_Active_anon_bytes";
-    public static final String CPU = "node_cpu_seconds_total";
-//    public static final String TOTAL_CPU = "node_memory_Active_anon_bytes";
-//    public static final String TOTAL_DISK = "node_memory_Active_anon_bytes";
-//    public static final String RESIDUE_MEMORY = "node_memory_Active_anon_bytes";
-//    public static final String RESIDUE_CPU = "node_memory_Active_anon_bytes";
-//    public static final String RESIDUE_DISK = "node_memory_Active_anon_bytes";
+    public static final String CPU = "node_cpu_seconds_total";//获取CPU有关参数
+    public static final String MEMORY__MEMAVAILABLE = "node_memory_MemAvailable";//剩余可用物理内存
+    public static final String MEMORY__MEMTOTAL = "node_memory_MemTotal";//总的物理内存
+    public static final String DISK_TOTAL = "node_filesystem_size_bytes{";//总磁盘大小
+    public static final String DISK_AVAIL = "node_filesystem_avail_bytes{";//剩余总磁盘大小
+    public static final String DISK_FSTYPE1 = "fstype=\"xfs\"";//文件格式1
+    public static final String DISK_FSTYPE2 = "fstype=\"ext4\"";//文件格式2
+
 
     @Bean
     public List<String> getVMMetrics() {
@@ -52,25 +53,7 @@ public class VMMetrics {
             int i = 0;
             while ((line = in.readLine()) != null) {
                 result += line;
-//                System.out.println(line);
                 resultList.add(line);
-//                if (line.indexOf(memoryString) != -1) {
-//                    i++;
-//                    if (i == 3) {
-//                        String[] strings = line.split(" ");
-//
-//                        String s = "\\+";
-//                        System.out.println(s);
-//                        String[] s1 = strings[1].split(s);
-//                        System.out.println(s1[1]);
-//                        System.out.println(Integer.valueOf(s1[1]));
-//                        System.out.println(strings[1].indexOf(s));
-//
-////                        System.out.println(line);
-//                        i = 0;
-//                    }
-//                }
-
 
             }
         } catch (Exception e) {

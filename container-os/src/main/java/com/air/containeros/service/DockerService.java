@@ -7,23 +7,19 @@ import com.github.dockerjava.api.model.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
 import java.util.*;
 
 /**
- * dockerClient.createImageCmd();个人理解，应该是上传一个dockerfile的同时创建一个镜像
- * dockerClient.buildImageCmd()；直接依据dockerfile的文件流创建一个镜像
+ * 对于docker容器管理，含有功能：
+ * 镜像部分：获取镜像、删除镜像、上传镜像；
+ * 容器部分：获取所有容器、创建容器、启动容器、停止容器、重启容器、删除容器
  */
 @Service
 public class DockerService {
 
     @Autowired
-//    private DockerConnection dockerConnection;
     private DockerClient dockerClient;
-
-    /**
-     * java调用docker api进行镜像的上传（docker load)
-     * 容器的启动（docker run）、停止（docker stop）、删除（docker rm）、重启（docker restart）
-     */
 
     /**
      * 获取镜像列表
@@ -31,12 +27,8 @@ public class DockerService {
      * @return
      */
     public List<Image> getImagesList() {
-//        System.out.println("-----------------------");
-//        System.out.println(dockerClient.buildImageCmd().getMemory());
-//        System.out.println("-----------------------");
 
         return dockerClient.listImagesCmd().exec();
-//        return dockerConnection.getDockerClient().listImagesCmd().exec();
     }
 
     /**
@@ -45,6 +37,7 @@ public class DockerService {
      * @param image
      */
     public void pushImage(String image) {
+
 
         dockerClient.pushImageCmd(image);
     }
@@ -60,10 +53,21 @@ public class DockerService {
     }
 
     /**
+     * 上传文件形成镜像
+     */
+    public void loadImages(InputStream inputStream) {
+        dockerClient.loadImageCmd(inputStream);
+
+    }
+
+
+    /**
      * 得到所有容器
      *
      * @return
      */
+
+
     public List<Container> getContainerList() {
         return dockerClient.listContainersCmd().exec();
     }
@@ -112,6 +116,7 @@ public class DockerService {
 
     /**
      * 删除容器
+     *
      * @param containerID 容器ID
      */
     public void removeContainer(String containerID) {

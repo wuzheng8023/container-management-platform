@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.math.BigDecimal;
-import java.util.zip.DeflaterOutputStream;
 
 @SpringBootTest
 @Slf4j
@@ -16,34 +14,36 @@ public class VMMessageServiceTest {
     private VMMessageService vmMessageService;
 
     @Test
-    public void test_getMemoryMessage() {
-//        System.out.println("---------------");
-//        System.out.println(vmMessageService.getMemoryMessage());
-//        log.debug("{}",vmMessageService.getMemoryMessage());
-//        System.out.println("------------------");
-        double i = (double) vmMessageService.getMemoryMessage();
-//       Long l = Long.valueOf(vmMessageService.getMemoryMessage());
-//        System.out.println(l);
-        System.out.println(i);
-        BigDecimal bigDecimal = new BigDecimal(i / 1024);
-        BigDecimal b = new BigDecimal(1945445.4597);
-        System.out.println("b=" + b);
-        System.out.println(bigDecimal);
+    public void test_getMemoryUtilization() {
 
-        double d = 123.4564;
-        System.out.println(d);
+        System.out.println(vmMessageService.getAvailMemory());
+        System.out.println(vmMessageService.getTotalMemory());
+        System.out.println(vmMessageService.getMemoryRate());
 
     }
 
     @Test
-    public void test_getCPUefficiency() {
+    public void test_getCPURate() {
 
-        for (double d : vmMessageService.getCPUefficiency()) {
-//            System.out.println("CPU利用率：" + d);
-
-            String temp = String.format("%.2f",d*100) + "%";
-            System.out.println("temp:" + temp);
-        }
+//        for (double d : vmMessageService.getCPURate()) {
+        double d = vmMessageService.getCPURate();
+        String temp = String.format("%.2f", d * 100) + "%";
+        System.out.println("temp:" + temp);
+//        }
 
     }
+
+    @Test
+    public void test_getTotalDisk() {
+
+        System.out.println("总磁盘大小：" + vmMessageService.getTotalDisk());
+    }
+
+    @Test
+    public void test_getAvailDisk() {
+
+        System.out.println("剩余磁盘大小：" + vmMessageService.getAvailDisk());
+    }
+
+
 }

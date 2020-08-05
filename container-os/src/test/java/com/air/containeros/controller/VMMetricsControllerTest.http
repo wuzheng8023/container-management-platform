@@ -1,3 +1,28 @@
-GET http://localhost:8080/api/metrics/cpuefficiency
+GET http://localhost:8080/api/metrics/cpurate
 
 ###
+GET http://localhost:8080/api/metrics/memorytotal
+
+###
+GET http://localhost:8080/api/metrics/memoryavail
+
+###
+
+GET http://localhost:8080/api/metrics/memoryrate
+
+###
+GET http://localhost:8080/api/metrics/disktotal
+
+###
+GET http://localhost:8080/api/metrics/diskavail
+
+
+###
+GET http://localhost:8080/api/metrics/diskrate
+
+###
+
+
+
+
+

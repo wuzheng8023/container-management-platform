@@ -39,5 +39,6 @@ public class VMMessageService {
  List<String> metricsList = vmMetrics.getVMMetrics();//这一句放置在方法内
         List<String> metricsList = vmMetrics.getVMMetrics();
 ````
-***总结***
+***总结：***
+
 个人认为，出现这样原因可能是@service组件中的内容不允许有单独的变量出现，具体的原因还需要细究；

@@ -7,12 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+
 @SpringBootTest
 public class DockerServiceTest {
     @Autowired
     private DockerService dockerService;
-
-    private final String containerID = "a11b8a3fb0b22cbd2bb6e6d429a754328f0b8205675a80d000aa4aed894362d1";
+//实际使用的时候，containerID还需要自己摘取，不是定值
+    private final String containerID = "d1892a05ac1979d91c93cb9e450c987c6fbc9f493566479d08c4d1fcc81372bf ";
 
 
     @Test
@@ -20,9 +22,6 @@ public class DockerServiceTest {
 
         for (Image image : dockerService.getImagesList()) {
             System.out.println(image);
-
-//            System.out.println(image.getCreated());
-
         }
 
     }
@@ -31,7 +30,7 @@ public class DockerServiceTest {
     public void test_getContainerList() {
         for (Container container : dockerService.getContainerList()) {
             System.out.println("容器id：" + container.getId()
-                    + "  容器名称：" + container.getNames()
+                    + "  容器名称：" + Arrays.toString(container.getNames())
                     + "  容器描述：" + container.getCommand());
         }
     }
@@ -42,7 +41,7 @@ public class DockerServiceTest {
         System.out.println("当前剩余容器");
         for (Container container : dockerService.getContainerList()) {
             System.out.println("容器id：" + container.getId()
-                    + "  容器名称：" + container.getNames()
+                    + "  容器名称：" + Arrays.toString(container.getNames())
                     + "  容器描述：" + container.getCommand());
         }
     }
@@ -54,7 +53,7 @@ public class DockerServiceTest {
         System.out.println("当前剩余容器");
         for (Container container : dockerService.getContainerList()) {
             System.out.println("容器id：" + container.getId()
-                    + "  容器名称：" + container.getNames()
+                    + "  容器名称：" + Arrays.toString(container.getNames())
                     + "  容器描述：" + container.getCommand());
         }
     }
@@ -65,10 +64,9 @@ public class DockerServiceTest {
         System.out.println("当前剩余容器");
         for (Container container : dockerService.getContainerList()) {
             System.out.println("容器id：" + container.getId()
-                    + "  容器名称：" + container.getNames()
+                    + "  容器名称：" + Arrays.toString(container.getNames())
                     + "  容器描述：" + container.getCommand());
         }
     }
-
 
 }

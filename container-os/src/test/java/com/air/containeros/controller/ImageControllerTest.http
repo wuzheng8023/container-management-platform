@@ -1,4 +1,22 @@
+POST http://localhost:8080/api/
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="field-name"; filename="file.txt"
+
+< ./relative/path/to/local_file.txt
+--WebAppBoundary--
+
+###
 GET http://localhost:8080/api/image/images
 
 
 ###
+
+GET http://localhost:8080/api/pushimages/{image}
+
+
+###
+
+GET http://localhost:8080/api/removeimage/{imageid}
+
