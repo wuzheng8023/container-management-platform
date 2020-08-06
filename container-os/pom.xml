@@ -12,7 +12,7 @@
     <artifactId>container-os</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>container-os</name>
-    <description>demo</description>
+    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>11</java.version>
